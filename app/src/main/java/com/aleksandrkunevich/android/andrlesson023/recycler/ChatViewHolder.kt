@@ -27,11 +27,22 @@ class ChatViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val titleTextView: TextView by lazy { itemView.title }
     private val subtitleTextView: TextView by lazy { itemView.subTitle }
     private val iconImageView: ImageView by lazy { itemView.icon }
+    private var itemClickListener: ((Chat) -> Unit)? = null
 
     // данные item прописываем в View нашей
     fun bindView(item: Chat) {
         titleTextView.text = item.title
         subtitleTextView.text = item.subtitle
         iconImageView.setImageResource(item.iconId)
+
+        itemView.setOnClickListener {
+            itemClickListener?.invoke(item)
+            it.title.text = "!!!"
+            it.subTitle.text = "???"
+        }
+    }
+
+    fun setItemClickListener(listener: ((Chat) -> Unit)) {
+        itemClickListener = listener
     }
 }
