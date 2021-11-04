@@ -2,23 +2,35 @@ package com.aleksandrkunevich.android.andrlesson023
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.aleksandrkunevich.android.andrlesson023.data.VideoCard
-import com.aleksandrkunevich.android.andrlesson023.databinding.ActivityMainBinding
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private val binding: ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater) }
-    private val videoCardAdapter: VideoCardAdapter by lazy { VideoCardAdapter() }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(binding.root)
-
-        initVideoCard()
+        setContentView(R.layout.activity_main)
     }
 
-    fun initVideoCard(){
-        for (i in 10 until 100 step 10)
-            videoCardAdapter.addVideoCardToList(VideoCard(i, "RTX10$i", (500..2000).random()))
+    override fun onStart() {
+        super.onStart()
+        runClick()
+    }
+
+    private fun runClick(){
+        et_main_1.setOnClickListener {
+            BottomFragment(et_main_1).show(supportFragmentManager, "TAG")
+        }
+        et_main_2.setOnClickListener {
+            BottomFragment(et_main_2).show(supportFragmentManager, "TAG")
+        }
+        et_main_3.setOnClickListener {
+            BottomFragment(et_main_3).show(supportFragmentManager, "TAG")
+        }
+        et_main_4.setOnClickListener {
+            BottomFragment(et_main_4).show(supportFragmentManager, "TAG")
+        }
+        et_main_5.setOnClickListener {
+            BottomFragment(et_main_5).show(supportFragmentManager, "TAG")
+        }
     }
 }

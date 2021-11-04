@@ -7,9 +7,16 @@ import com.aleksandrkunevich.android.andrlesson023.data.VideoCard
 class VideoCardAdapter : RecyclerView.Adapter<VideoCardHolder>() {
 
     private val videoCardList: MutableList<VideoCard> = mutableListOf()
+    private var itemClickListener: ((VideoCard) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoCardHolder {
-        return VideoCardHolder.from(parent)
+        val viewHolder = VideoCardHolder.from(parent)
+
+        viewHolder.setItemClickListener { videoCard ->
+            itemClickListener?.invoke(videoCard)
+        }
+
+        return viewHolder
     }
 
     override fun onBindViewHolder(holder: VideoCardHolder, position: Int) {
@@ -23,5 +30,9 @@ class VideoCardAdapter : RecyclerView.Adapter<VideoCardHolder>() {
     fun addVideoCardToList(item: VideoCard) {
         videoCardList.add(item)
         notifyDataSetChanged()
+    }
+
+    fun setOnItemClickListener(listener: (VideoCard) -> Unit) {
+        itemClickListener = listener
     }
 }
