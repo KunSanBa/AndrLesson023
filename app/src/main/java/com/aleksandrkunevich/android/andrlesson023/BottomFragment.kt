@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.aleksandrkunevich.android.andrlesson023.data.VideoCard
+import com.aleksandrkunevich.android.andrlesson023.data.VideoCardAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.videocard_layout.*
 
@@ -38,7 +39,6 @@ class BottomFragment(private val listener: (VideoCard) -> Unit) : BottomSheetDia
     }
 
     private fun initVideoCard() {
-        for (i in 10 until 200 step 10)
-            videoCardAdapter.addVideoCardToList(VideoCard(i, "RTX10$i", (500..2000).random()))
+        videoCardAdapter.addVideoCardToList()
     }
 }

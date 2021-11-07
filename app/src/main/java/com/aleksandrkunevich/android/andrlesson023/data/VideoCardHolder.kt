@@ -1,11 +1,11 @@
-package com.aleksandrkunevich.android.andrlesson023
+package com.aleksandrkunevich.android.andrlesson023.data
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.aleksandrkunevich.android.andrlesson023.data.VideoCard
+import com.aleksandrkunevich.android.andrlesson023.R
 import kotlinx.android.synthetic.main.video_card.view.*
 
 class VideoCardHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

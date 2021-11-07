@@ -1,8 +1,7 @@
-package com.aleksandrkunevich.android.andrlesson023
+package com.aleksandrkunevich.android.andrlesson023.data
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.aleksandrkunevich.android.andrlesson023.data.VideoCard
 
 class VideoCardAdapter : RecyclerView.Adapter<VideoCardHolder>() {
 
@@ -27,8 +26,10 @@ class VideoCardAdapter : RecyclerView.Adapter<VideoCardHolder>() {
         return videoCardList.size
     }
 
-    fun addVideoCardToList(item: VideoCard) {
-        videoCardList.add(item)
+    fun addVideoCardToList() {
+        for (i in 10 until 200 step 10) {
+            videoCardList.add(VideoCard(i, "RTX10$i", (500..2000).random()))
+        }
         notifyDataSetChanged()
     }
 
