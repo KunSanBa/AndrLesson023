@@ -30,15 +30,11 @@ class BottomFragment(private val listener: (VideoCard) -> Unit) : BottomSheetDia
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initVideoCard()
+        videoCardAdapter.notifyDataSetChanged()
         recyclerVideoCard.adapter = videoCardAdapter
         videoCardAdapter.setOnItemClickListener { videocard ->
             listener.invoke(videocard)
             dismiss()
         }
-    }
-
-    private fun initVideoCard() {
-        videoCardAdapter.addVideoCardToList()
     }
 }

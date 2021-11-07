@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class VideoCardAdapter : RecyclerView.Adapter<VideoCardHolder>() {
 
-    private val videoCardList: MutableList<VideoCard> = mutableListOf()
+    private val videoCardList = DataSource.dataList
     private var itemClickListener: ((VideoCard) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoCardHolder {
@@ -24,13 +24,6 @@ class VideoCardAdapter : RecyclerView.Adapter<VideoCardHolder>() {
 
     override fun getItemCount(): Int {
         return videoCardList.size
-    }
-
-    fun addVideoCardToList() {
-        for (i in 10 until 200 step 10) {
-            videoCardList.add(VideoCard(i, "RTX10$i", (500..2000).random()))
-        }
-        notifyDataSetChanged()
     }
 
     fun setOnItemClickListener(listener: (VideoCard) -> Unit) {
