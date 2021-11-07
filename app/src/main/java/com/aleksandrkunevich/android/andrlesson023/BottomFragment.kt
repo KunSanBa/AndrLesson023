@@ -5,8 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.LinearLayout
-import androidx.fragment.app.DialogFragment
 import com.aleksandrkunevich.android.andrlesson023.data.VideoCard
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -20,6 +18,7 @@ class BottomFragment(private val et_main: EditText) : BottomSheetDialogFragment(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+//        BottomSheetBehavior.from().peekHeight = 300
         return inflater.inflate(R.layout.videocard_layout, container, false)
     }
 
@@ -34,9 +33,7 @@ class BottomFragment(private val et_main: EditText) : BottomSheetDialogFragment(
     }
 
     private fun initVideoCard() {
-        for (i in 10 until 100 step 10)
+        for (i in 10 until 200 step 10)
             videoCardAdapter.addVideoCardToList(VideoCard(i, "RTX10$i", (500..2000).random()))
     }
-
-    override fun getTheme() = R.style.BottomSheetStyleTheme
 }
