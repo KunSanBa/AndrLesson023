@@ -16,21 +16,32 @@ class MainActivity : AppCompatActivity() {
         runClick()
     }
 
-    private fun runClick(){
+    private fun runClick() {
+
         et_main_1.setOnClickListener {
-            BottomFragment(et_main_1).show(supportFragmentManager, "TAG")
+            BottomFragment.newInstance { videocard ->
+                et_main_1.setText(videocard.vcModel)
+            }.show(supportFragmentManager, BottomFragment.TAG)
         }
         et_main_2.setOnClickListener {
-            BottomFragment(et_main_2).show(supportFragmentManager, "TAG")
+            BottomFragment.newInstance { videocard ->
+                et_main_2.setText(videocard.vcModel)
+            }.show(supportFragmentManager, BottomFragment.TAG)
         }
         et_main_3.setOnClickListener {
-            BottomFragment(et_main_3).show(supportFragmentManager, "TAG")
+            BottomFragment.newInstance { videocard ->
+                et_main_3.setText(videocard.vcModel)
+            }.show(supportFragmentManager, BottomFragment.TAG)
         }
         et_main_4.setOnClickListener {
-            BottomFragment(et_main_4).show(supportFragmentManager, "TAG")
+            BottomFragment.newInstance { videocard ->
+                et_main_4.setText(videocard.vcModel)
+            }.show(supportFragmentManager, BottomFragment.TAG)
         }
         et_main_5.setOnClickListener {
-            BottomFragment(et_main_5).show(supportFragmentManager, "TAG")
+            BottomFragment.newInstance { videocard ->
+                et_main_5.setText(videocard.vcModel)
+            }.show(supportFragmentManager, BottomFragment.TAG)
         }
     }
 }

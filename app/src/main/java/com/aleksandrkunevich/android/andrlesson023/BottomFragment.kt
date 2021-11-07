@@ -4,13 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import com.aleksandrkunevich.android.andrlesson023.data.VideoCard
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.videocard_layout.*
 
-class BottomFragment(private val et_main: EditText) : BottomSheetDialogFragment() {
+class BottomFragment(private val listener: (VideoCard) -> Unit) : BottomSheetDialogFragment() {
+
+    companion object {
+        const val TAG = "BottomFragment"
+        fun newInstance(listener: ((VideoCard) -> Unit)): BottomFragment {
+            return BottomFragment(listener)
+        }
+    }
 
     private val videoCardAdapter by lazy { VideoCardAdapter() }
 
@@ -26,8 +31,8 @@ class BottomFragment(private val et_main: EditText) : BottomSheetDialogFragment(
         super.onViewCreated(view, savedInstanceState)
         initVideoCard()
         recyclerVideoCard.adapter = videoCardAdapter
-        videoCardAdapter.setOnItemClickListener {
-            et_main.setText(it.vcModel)
+        videoCardAdapter.setOnItemClickListener { videocard ->
+            listener.invoke(videocard)
             dismiss()
         }
     }
